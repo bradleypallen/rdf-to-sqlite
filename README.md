@@ -53,9 +53,6 @@ CREATE TABLE [Person_rdf:type] (
 );
 ```
 
-## License
-MIT. See the LICENSE file for the copyright notice.
-
 ## References
 [[1]](https://doi.org/10.1145/1815948.1815953)  Sakr, S. and Al-Naymat, G., 2010.
 Relational processing of RDF queries: a survey. ACM SIGMOD Record, 38(4), pp.23-28.
