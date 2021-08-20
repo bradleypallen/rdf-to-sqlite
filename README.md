@@ -1,5 +1,5 @@
 # rdf-to-sqlite
-[![PyPI](https://img.shields.io/pypi/v/rdf-to-sqlite.svg)](https://test.pypi.org/project/rdf-to-sqlite/)
+[![PyPI](https://img.shields.io/pypi/v/rdf-to-sqlite.svg)](https://pypi.org/project/rdf-to-sqlite/)
 [![Changelog](https://img.shields.io/github/v/release/bradleypallen/rdf-to-sqlite?include_prereleases&label=changelog)](https://github.com/bradleypallen/rdf-to-sqlite/releases)
 [![Tests](https://github.com/bradleypallen/rdf-to-sqlite/workflows/Test/badge.svg)](https://github.com/bradleypallen/rdf-to-sqlite/actions?query=workflow%3ATest)
 [![License](https://img.shields.io/github/license/bradleypallen/rdf-to-sqlite)](https://github.com/bradleypallen/rdf-to-sqlite/blob/main/LICENSE)
