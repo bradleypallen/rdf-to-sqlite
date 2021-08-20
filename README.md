@@ -1,8 +1,8 @@
 # rdf_to_sqlite
-[![PyPI](https://img.shields.io/pypi/v/yaml-to-sqlite.svg)](https://pypi.org/project/rdf-to-sqlite/)
-[![Changelog](https://img.shields.io/github/v/release/simonw/yaml-to-sqlite?include_prereleases&label=changelog)](https://github.com/simonw/yaml-to-sqlite/releases)
-[![Tests](https://github.com/simonw/yaml-to-sqlite/workflows/Test/badge.svg)](https://github.com/simonw/yaml-to-sqlite/actions?query=workflow%3ATest)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/simonw/yaml-to-sqlite/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/rdf-to-sqlite.svg)](https://pypi.org/project/rdf-to-sqlite/)
+[![Changelog](https://img.shields.io/github/v/release/bradleypallen/rdf-to-sqlite?include_prereleases&label=changelog)](https://github.com/bradleypallen/rdf-to-sqlite/releases)
+[![Tests](https://github.com/bradleypallen/rdf-to-sqlite/workflows/Test/badge.svg)](https://github.com/bradleypallen/rdf-to-sqlite/actions?query=workflow%3ATest)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bradleypallen/rdf-to-sqlite/blob/main/LICENSE)
 
 Load the contents of an RDF file into a set of SQLite database tables.
 
@@ -21,23 +21,23 @@ Options:
 ```
 ## Usage
 Given an RDF file `example.ttl` containing the following:
-'''
+```
 @prefix ns1: <http://schema.org/> .
 
 <http://www.janedoe.com/> a ns1:Person ;
     ns1:jobTitle "Professor" ;
     ns1:name "Jane Doe" ;
     ns1:telephone "(425) 123-4567" .
-'''
+```
 
 Running this command:
-'''
+```
 $ rdf-to-sqlite example.db example.ttl --format turtle --context https://schema.org/docs/jsonldcontext.jsonld
-'''
+```
 
 Will create a database file `example.db` with this schema, using a property
 table approach to RDF storage on relational databases [1], [2]:
-'''
+```
 CREATE TABLE [Person] (
    [@context] TEXT,
    [id] TEXT PRIMARY KEY,
@@ -51,7 +51,7 @@ CREATE TABLE [Person_rdf:type] (
    [object] TEXT,
    PRIMARY KEY ([subject], [object])
 );
-'''
+```
 
 ## License
 MIT. See the LICENSE file for the copyright notice.
