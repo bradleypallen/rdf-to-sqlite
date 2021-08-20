@@ -1,5 +1,5 @@
 # rdf-to-sqlite
-[![PyPI](https://img.shields.io/pypi/v/rdf-to-sqlite.svg)](https://pypi.org/project/rdf-to-sqlite/)
+[![PyPI](https://img.shields.io/pypi/v/rdf-to-sqlite.svg)](https://test.pypi.org/project/rdf-to-sqlite/)
 [![Changelog](https://img.shields.io/github/v/release/bradleypallen/rdf-to-sqlite?include_prereleases&label=changelog)](https://github.com/bradleypallen/rdf-to-sqlite/releases)
 [![Tests](https://github.com/bradleypallen/rdf-to-sqlite/workflows/Test/badge.svg)](https://github.com/bradleypallen/rdf-to-sqlite/actions?query=workflow%3ATest)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bradleypallen/rdf-to-sqlite/blob/main/LICENSE)
@@ -52,6 +52,10 @@ CREATE TABLE [Person_rdf:type] (
    PRIMARY KEY ([subject], [object])
 );
 ```
+## Acknowledgements
+Thanks to Simon Willison for the inspiration from his work on [Datasette](https://datasette.io)
+and more specifically [yaml-to-sql](https://github.com/simonw/yaml-to-sqlite),
+which was a very useful example for how to package this up properly.  
 
 ## References
 [[1]](https://doi.org/10.1145/1815948.1815953)  Sakr, S. and Al-Naymat, G., 2010.
