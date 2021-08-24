@@ -1,9 +1,7 @@
+import json, sqlite_utils
 from click.testing import CliRunner
 from rdf_to_sqlite import cli
 from pathlib import Path
-import sqlite_utils
-import json
-import textwrap
 
 TEST_RDF = """
 {
