@@ -1,6 +1,7 @@
 import json, sqlite_utils
-from click.testing import CliRunner
-from rdf_to_sqlite import cli
+from rdf_to_sqlite.mappings import rdf_to_sqlite, sqlite_to_rdf
+from sqlite_utils import Database
+from rdflib import Graph
 from pathlib import Path
 
 TEST_RDF = """
@@ -95,25 +96,13 @@ EXPECTED_BOOK_COMMENT_ROWS = [
   'object': 'https://wsburroughs.link/Comment/n002ffd6182d84355b9967f0665f44e14b2679'}
 ]
 
-def test_cli(tmpdir):
-    db_path = tmpdir / "test_cli.db"
-    rdf_path = tmpdir / "test_cli.jsonld"
+def test_mapping_roundtrip(tmpdir):
+    db_path = tmpdir / "test_mappings.db"
+    rdf_path = tmpdir / "test_mappings.jsonld"
     Path(rdf_path).write_text(TEST_RDF)
-    assert (
-        0
-        == CliRunner()
-        .invoke(cli.cli,
-                [
-                    str(db_path),
-                    str(rdf_path),
-                    "--context",
-                    "https://schema.org/docs/jsonldcontext.jsonld",
-                    "--format",
-                    "json-ld"
-                ]
-        )
-        .exit_code
-    )
-    db = sqlite_utils.Database(str(db_path))
-    assert [i for i in EXPECTED_COMMENT_ROWS if i not in list(db['Comment'].rows)] == []
-    assert [i for i in EXPECTED_BOOK_COMMENT_ROWS if i not in list(db['Book_comment'].rows)] == []
+    db = Database(str(db_path))
+    graph_in = Graph().parse(str(rdf_path), format='json-ld')
+    context = "https://schema.org/docs/jsonldcontext.jsonld"
+    rdf_to_sqlite(graph_in, context, db)
+    graph_out = sqlite_to_rdf(db, context)
+    assert len(graph_in) == len(graph_out)
